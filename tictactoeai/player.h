@@ -4,6 +4,7 @@
 class Player {
 private:
   bool piece;
+  int size;
 public:
   Player(bool);
   bool is_x();

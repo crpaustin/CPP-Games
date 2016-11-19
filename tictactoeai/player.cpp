@@ -10,9 +10,9 @@ bool Player::is_x() {
   return piece;
 }
 
-int doTurn() {
-  cout << "Player " << (is_x ? "X" : "Y") << ", choose a position: ";
+int Player::doTurn() {
+  cout << "Player " << (this->piece ? "X" : "Y") << ", choose a position: ";
   int position;
   cin >> position;
-  return position;
+  return position - 1;
 }

@@ -4,11 +4,11 @@
 class ArtInt {
 private:
   bool piece;
-  int* scores;
+  int getBestMove(Board*, bool);
 public:
   ArtInt(bool);
   bool is_x();
-  int doTurn();
+  int doTurn(Board*);
 };
 
 #endif

@@ -8,10 +8,11 @@ using namespace std;
 
 Board::Board() {
   pieces = new int[9];
+  size = 0;
   for(int i = 0; i < 9; i++) {
     this->pieces[i] = 0;
   }
-  this->draw();
+  //this->draw();
 }
 
 void Board::draw() {
@@ -58,23 +59,24 @@ void Board::draw() {
 }
 
 string Board::place(bool player_is_x, int position) {
-  if(position < 1 || position > 9) {
+  if(position < 0 || position > 8) {
     return "Position out of range.";
-  } else if(this->pieces[position-1] != 0) {
+  } else if(this->pieces[position] != 0) {
     return "Position not empty.";
   } else {
-    this->pieces[position-1] = player_is_x ? 1 : 2;
-    draw();
+    this->pieces[position] = player_is_x ? 1 : 2;
+    size++;
+    //draw();
     stringstream ss;
     ss.clear();
     ss.str("");
-    ss << (player_is_x ? "X" : "Y") << " placed a piece at position " << position << ".";
+    ss << (player_is_x ? "X" : "O") << " placed a piece at position " << position << ".";
     return ss.str();
   }
   return "Error occurred.";
 }
 
-int checkWin() {
+int Board::checkWin() {
   if(this->pieces[0] > 0) {
     if(this->pieces[0] == this->pieces[1] && this->pieces[1] == this->pieces[2]) {
       return this->pieces[0];
@@ -117,4 +119,12 @@ Board* Board::copyBoard() {
     }
   }
   return new_board;
+}
+
+int Board::getSize() {
+  return size;
+}
+
+int Board::getPiece(int position) {
+  return pieces[position];
 }
