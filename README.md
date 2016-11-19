@@ -2,7 +2,8 @@
 A collection of games made in C++
 
 ### Usage
-Each file can be compiled on its own using g++. Once the file is compiled, run the .exe and the instructions will be on screen.
+Single files can be compiled on their own using g++. Once the file is compiled, run the .exe and the instructions will be on screen.
+Tic Tac Toe AI has its own build file. Simply run build.bat and the instructions will be on screen.
 
 ### Guess Game (guessgame.cpp)
 This has been a favorite of mine for getting started in a programming language. The first time I made a number guessing game was using Lua on a scripting app that I had found for my iPod Touch when I was 13. Since then, it's become a tradtion for me to recreate this simple guessing game in each language that I learn.
@@ -19,7 +20,7 @@ This was one of the first ideas that I programmed while learning C++. It allowed
 The rest of the game was as simple as accepting user input, placing letters where they belonged and ending the game when either player had three in a row or the board was filled.
 
 ### Tic Tac Toe Plus (tictactoeplus.cpp)
-The last game on this list also happens to be the most complex. It's an advanced version of Tic Tac Toe, appropriately named Tic Tac Toe Plus. It presents a 9x9 grid, or rather a 3x3 grid of 3x3 grids. The way this game works is that the first player selects one of the smaller 3x3 grids to play his or her piece. The position on the small board which the first player picks is the same as the position of the 3x3 grid on the big board which the second player must place his or her piece on.
+The last third game on this list also happens to be the most complex so far. It's an advanced version of Tic Tac Toe, appropriately named Tic Tac Toe Plus. It presents a 9x9 grid, or rather a 3x3 grid of 3x3 grids. The way this game works is that the first player selects one of the smaller 3x3 grids to play his or her piece. The position on the small board which the first player picks is the same as the position of the 3x3 grid on the big board which the second player must place his or her piece on.
 
 For example:
 * Player 1 chooses the upper right grid. He then places his piece in the center of the upper right 3x3.
@@ -32,3 +33,18 @@ Whenever a player wins a smaller 3x3 grid, he or she then gets to place their le
 To recreate this in C++, I reused the basic 3x3 grid code from my original Tic Tac Toe game. I then expanded it to allow for two instances of the grid. One instance controls the current state of the big board, the other instance contains the state of each of the smaller boards. After filling in the current game pieces into the two-dimensional array which has been expanded to 9x9, I draw the board using a similar loop as in the basic Tic Tac Toe program.
 
 In this program, I decided to separate most of the game logic into separate functions. This made it much easier to track what was happening and where it was happening at. The only thing that wasn't in its own function was the main game loop which included gathering input before running the appropriate functions to verify the input and then process the input.
+
+### Tic Tac Toe AI (tictactoeai directory)
+This game goes beyond the scope of the rest. It's exactly the same as Tic Tac Toe by looks, but it has an interesting addition. Rather than having two players, you have only one and then a scripted AI. Unforunately for the player, there is no legitimate way to beat this AI. The player would have to cheat in order to get any outcome better than a tie.
+
+As with Tic Tac Toe, the point of the game is to be the first player to get three in a row, be it vertically, horizontally, or diagonally. When running the program, the user is presented with three options: play as X, play as O, or watch AI vs. AI. The last option is fun to watch the first time, but on subsequent runs, you realize that these scripted AI's play the same game every time. It's like watching a cat fight!
+
+The game was simple to set up, using the same framework as I did in the original Tic Tac Toe. The biggest difference was the use of abstraction of information into classes to allow an easier understanding of what things do. The main function only contains two lines of code. This allowed me to get everything else working, knowing that once I got to work on the AI, it wouldn't break other things. This sped up the process of setting things up, so much so that I had this project finished in less than a day's work. 
+
+The AI uses a recursive minimax algorithm to determine which move is the best. It works like this:
+* If the current board is in a win state, return -10 if O wins, 10 if X wins, and 0 if it is a draw.
+* If there is only one blank space left, choose that one and return -10 if O wins, 10 if X wins, and 0 if it is a draw.
+* Otherwise, for each blank space, place the current player's piece and run the algorithm with the updated board given the other player's turn.
+Forgive me if this description is a little unclear. I can guarantee you that it is more clear than trying to understand the code behind this.
+
+This was a personal project for me. I wanted to begin to get into AI: how it works and how to make it better. The feeling of victory upon seeing my AI do exactly what I want is the reason why I love programming and challenges. It's why I'm in Computer Science, and this ended up being one the best moments of my life. I'm very glad to have taken on this project, and I will most definitely be using what I've learned to further my knowledge and ability with Artificial Intelligence.
