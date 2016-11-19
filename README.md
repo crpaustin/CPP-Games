@@ -45,6 +45,7 @@ The AI uses a recursive minimax algorithm to determine which move is the best. I
 * If the current board is in a win state, return -10 if O wins, 10 if X wins, and 0 if it is a draw.
 * If there is only one blank space left, choose that one and return -10 if O wins, 10 if X wins, and 0 if it is a draw.
 * Otherwise, for each blank space, place the current player's piece and run the algorithm with the updated board given the other player's turn.
+
 Forgive me if this description is a little unclear. I can guarantee you that it is more clear than trying to understand the code behind this.
 
 This was a personal project for me. I wanted to begin to get into AI: how it works and how to make it better. The feeling of victory upon seeing my AI do exactly what I want is the reason why I love programming and challenges. It's why I'm in Computer Science, and this ended up being one the best moments of my life. I'm very glad to have taken on this project, and I will most definitely be using what I've learned to further my knowledge and ability with Artificial Intelligence.
