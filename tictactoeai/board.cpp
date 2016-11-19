@@ -115,7 +115,7 @@ Board* Board::copyBoard() {
   Board* new_board = new Board();
   for(int i = 0; i < 9; i++) {
     if(this->pieces[i] > 0) {
-      new_board->place((pieces[i] == 1 ? 1 : 0), i+1);
+      new_board->place((pieces[i] == 1 ? 1 : 0), i);
     }
   }
   return new_board;

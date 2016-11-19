@@ -7,13 +7,12 @@ using namespace std;
 int main() {
   // game pieces
   Board* board = new Board();
-  Player* player = new Player(true);
-  ArtInt* artint = new ArtInt(false);
+  Player* player = new Player(false);
+  ArtInt* artint = new ArtInt(true);
   string valid = "";
-
   // Main game loop
-  for(int i = 0; i < 9 && board.checkWin() == 0; i++) {
-    invalid = true; // guilty until proven innocent
+  for(int i = 0; i < 9 && board->checkWin() == 0; i++) {
+    bool invalid = true; // guilty until proven innocent
     while(invalid) {
       board->draw();
       cout << valid << endl; // prints prev turn or error
@@ -34,7 +33,7 @@ int main() {
           position = artint->doTurn(board);
           is_player = false;
         } else {
-          position = artint->doTurn();
+          position = player->doTurn();
           is_player = true;
         }
       }
@@ -48,6 +47,16 @@ int main() {
       if(valid[0] == 'P') invalid = true; // guilty
       else invalid = false; // innocent
     }
+  }
+  board->draw();
+  // Win conditions
+  int score = board->checkWin();
+  if(score == 0) {
+    cout << "It's a draw." << endl;
+  } else if(score == 1) {
+    cout << "X wins." << endl;
+  } else if(score == 2) {
+    cout << "O wins." << endl;
   }
   return 0;
 }

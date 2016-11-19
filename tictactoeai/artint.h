@@ -1,6 +1,8 @@
 #ifndef ARTINT_H
 #define ARTINT_H
 
+#include "board.h"
+
 class ArtInt {
 private:
   bool piece;
